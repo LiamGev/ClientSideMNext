@@ -1,0 +1,20 @@
+<!-- login.component.html -->
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <h2>Login</h2>
+                <hr>
+                <!-- Display error message -->
+                <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+                <label for="userName" class="form-label"><em>Gebruikersnaam:</em></label>
+                <input type="text" name="userName" style="margin-bottom: 15px;" class="form-control" id="userName">
+                <label for="password" class="form-label"><em>Wachtwoord:</em></label>
+                <input type="password" name="password" style="margin-bottom: 15px;" class="form-control" id="password">
+                <button (click)="login()" type="submit" class="btn btn-primary">Login</button>
+                <button class="btn btn-primary btn-create-account" routerLink="/register">creëer account</button>
+            </form>
+        </div>
+    </div>
+</div>

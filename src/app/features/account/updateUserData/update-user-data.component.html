@@ -1,0 +1,43 @@
+<!-- register.component.html -->
+
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <form (submit)="updateUserData()">
+                <h2>Bewerk accountgegevens</h2>
+                <hr>
+                <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+                <label for="registerUserName" class="form-label"><em>Bewerk gebruikersnaam:</em></label>
+                <input type="text" name="registerUserName" style="margin-bottom: 15px;" class="form-control"
+                    id="registerUserName" [(ngModel)]="username">
+
+                <label for="confirmPassword" class="form-label"><em>Huidig Wachtwoord:</em></label>
+                <input type="password" name="oldPassword" style="margin-bottom: 15px;" class="form-control"
+                    id="oldPassword" [(ngModel)]="oldPassword">
+
+                <label for="registerPassword" class="form-label"><em>Nieuw wachtwoord:</em></label>
+                <input type="password" name="registerPassword" style="margin-bottom: 15px;" class="form-control"
+                    id="registerPassword" [(ngModel)]="password">
+
+                <!-- Display error message if password is too short -->
+                <div *ngIf="password.length > 0 && password.length < 8" class="text-danger">
+                    Wachtwoord moet minstens 8 tekens lang zijn
+                </div>
+
+                <label for="confirmPassword" class="form-label"><em>Bevestig nieuw wachtwoord:</em></label>
+                <input type="password" name="confirmPassword" style="margin-bottom: 15px;" class="form-control"
+                    id="confirmPassword" [(ngModel)]="confirmPassword">
+
+                <!-- Display error message if passwords do not match -->
+                <div *ngIf="password !== confirmPassword" class="text-danger">
+                    De ingevulde wachtwoorden komen niet overeen
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="password !== confirmPassword || password.length < 8">Opslaan</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+/* Add hover effect for the hover-underline class */
+.text-warning,
+.text-danger {
+  text-decoration: none;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+  cursor: pointer; /* Optional: Change cursor on hover to indicate interactivity */
+}

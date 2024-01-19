@@ -1,0 +1,129 @@
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="card mx-3 mb-3" style="width: 30rem;">
+            <div class="card-body">
+                <h3 class="card-title">Boiler</h3>
+                <p class="card-subtitle mb-3" style="font-size: 80%;">Bereken hier het energieverlies van een e-boiler
+                </p>
+                <hr>
+                <form>
+                    <div class="form-group mb-3">
+                        <label for="title"><em>Titel:</em></label>
+                        <input class="form-control" id="title" placeholder="Typ een titel...">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="numberInput"><em>Aantal liter:</em></label>
+                        <input type="number" class="form-control" id="amountLitres" placeholder="Typ een nummer...">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="numberInput"><em>Prijs kWh:</em></label>
+                        <input type="number" class="form-control" id="priceKwh" placeholder="Typ een nummer..."
+                            step="0.01">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="numberInput"><em>Elektrisch vermogen E-boiler in kW:</em></label>
+                        <input type="number" class="form-control" id="electrical" placeholder="Typ een nummer..."
+                            step="0.01">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="numberInput"><em>Energielabel boiler:</em></label>
+                        <select class="form-control" id="energielabelSelect">
+                            <option value="A+">A+</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3" *ngIf="authService.loggedIn && authService.userActivated">
+                        <label for="household"><em>Huishouden:</em></label>
+
+                        <div class="dropdown-wrapper">
+                            <select class="form-control" id="household" name="household">
+                                <option *ngFor="let household of households" [value]="household.id">
+                                    {{ household.familyName }}
+                                </option>
+                            </select>
+
+                            <!-- New button to reveal extra inputs -->
+
+                            <button type="button" class="btn btn-secondary new-family-button"
+                                (click)="toggleNewFamilyFields()">
+                                Nieuw Huishouden
+                            </button>
+
+
+                            <div class="new-family-fields" *ngIf="showNewFamilyFields">
+                                <input class="form-control" id="newFamilyName" placeholder="Vul naam in"
+                                    [(ngModel)]="newFamilyName" name="newFamilyName">
+                                <input class="form-control" id="newFamilyPostcode" placeholder="Vul postcode in"
+                                    [(ngModel)]="newFamilyPostcode" name="newFamilyPostcode">
+                                <input class="form-control" id="newFamilyCity" placeholder="Vul gemeente in"
+                                    [(ngModel)]="newFamilyCity" name="newFamilyCity">
+                                <button type="button" class="btn btn-secondary new-family-button"
+                                    (click)="createNewHousehold()">Aanmaken</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display this block if the user is not logged in -->
+                    <div *ngIf="!authService.loggedIn || !authService.userActivated" class="form-group mb-3">
+                        <label for="familyName"><em>Familienaam:</em></label>
+                        <input class="form-control" id="familyName" placeholder="Vul familienaam in"
+                            [(ngModel)]="newFamilyName" name="newFamilyName">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="opmerkingen"><em>Opmerkingen:</em></label>
+                        <textarea class="form-control" id="opmerkingen" placeholder="Plaats opmerkingen..."></textarea>
+                    </div>
+
+                    <button (click)="createRecord()" routerLink="/customer-overview" type="submit"
+                        class="btn btn-primary" *ngIf="authService.loggedIn && authService.userActivated"
+                        routerLinkActive="actieve-link">Opslaan</button>
+                    <button style="margin-left: 10px;" class="btn btn-primary" (click)="downloadAsPdf()">Download als
+                        PDF</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mx-3 mb-3" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">Resultaten</h5>
+                <hr>
+                <em>Kosten 1 keer opwarmen:</em>
+                <div style="display: flex;">
+                    <h1 style="margin-right: 5px">€</h1>
+                    <h1 id="kostenOpwarmen"></h1>
+                </div>
+                <em>Tijd nodig om het water te verwarmen:</em>
+                <div style="display: flex;">
+                    <h1 id="tijdVerwarmen"></h1>
+                    <h1 style="margin-left: 5px;">Min</h1>
+                </div>
+                <em>Hoeveelheid energie om op te warmen van 15C naar 70C:</em>
+                <div style="display: flex;">
+                    <h1 id="energieOpwarmen"></h1>
+                    <h1 style="margin-left: 5px;">kWh</h1>
+                </div>
+                <em>Kosten stilstandverlies per jaar:</em>
+                <div style="display: flex;">
+                    <h1 style="margin-right: 5px">€</h1>
+                    <h1 id="kostenStilstandverlies"></h1>
+                </div>
+                <em>Stilstandverlies per dag:</em>
+                <div style="display: flex;">
+                    <h1 id="stilstandverliesPerDag"></h1>
+                    <h1 style="margin-left: 5px;">kWh</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

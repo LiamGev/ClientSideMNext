@@ -1,0 +1,43 @@
+body {
+  padding-top: 56px; /* Adjust the height based on your navbar height */
+}
+
+.navbar {
+  background-color: #cdfcc9;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.navbar-toggler-icon {
+  background-color: #333; /* Dark color for toggler icon */
+}
+
+.navbar-nav {
+  /* Remove margin-left: auto; to center align nav items */
+}
+
+.nav-link {
+  color: #333; /* Dark color for nav links */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: large;
+}
+
+.nav-item {
+  margin-left: 10px;
+}
+.nav-link:hover {
+  color: #007bff; /* Hover color for nav links */
+}
+
+.actieve-link {
+  color: #007bff !important; /* Active link color */
+}
+
+.navbar-brand img {
+  height: 50px; /* Adjust the logo height */
+}
+
+.logo-image img {
+  overflow: hidden;
+  margin-top: -6px;
+}

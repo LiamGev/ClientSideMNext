@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+          <h1>Nieuw huishouden</h1>
+          <hr> <!-- Add a line underneath the title -->
+          <div class="form-group">
+            <label for="familyName">Familie Naam:</label>
+            <input type="text" class="form-control" id="familyName" [(ngModel)]="household.familyName" name="familyName"
+              required style="width: 200px; margin-bottom: 15px;" />
+          </div>
+          <div class="form-group">
+            <label for="City">Gemeente:</label>
+            <input type="text" class="form-control" id="City" [(ngModel)]="household.City" name="City" required
+              style="width: 200px; margin-bottom: 15px;" />
+          </div>
+          <div class="form-group">
+            <label for="postCode">Postcode:</label>
+            <input type="text" class="form-control" id="postCode" [(ngModel)]="household.postCode" name="postCode"
+              required style="width: 100px; margin-bottom: 15px;" />
+          </div>
+          <button class="btn btn-primary" (click)="updateFamily(householdId)">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+/* Style labels */
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style values */
+.form-group .form-control-plaintext {
+  color: #555;
+}
+
+/* Add some spacing and margin */
+.container {
+  margin-top: 30px;
+}
+
+h4 {
+  color: #2585fe;
+}
+
+/* Style the Download button */
+.btn-primary {
+  margin-top: 20px;
+}

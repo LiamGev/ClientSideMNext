@@ -1,0 +1,116 @@
+<div class="container mt-5">
+    <h4 class="mb-4">Berekening: {{ calculation.Titel }}</h4>
+    <h4 class="mb-4">Klant: {{ householdName }}</h4>
+    <div class="card">
+        <div class="card-body">
+            <div #dataToExport style="background-color: #ffffff;">
+
+                <h4 class="mb-4">Boiler Informatie</h4>
+
+                <div>
+                    <form>
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-3 col-form-label">Titel:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="title"
+                                    [value]="calculation.Titel">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="amountInLiter" class="col-sm-3 col-form-label">Aantal Liter:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="amountInLiter"
+                                    [value]="calculation.Liters + ' Liter'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pricePerKwh" class="col-sm-3 col-form-label">Prijs kWh:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="pricePerKwh"
+                                    [value]="calculation.Prijs_in_euro + ' eurocent'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="powerBoiler" class="col-sm-3 col-form-label">Electrisch vermogen
+                                E-Boiler:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="powerBoiler"
+                                    [value]="calculation.Elektrisch_vermogen + ' kW'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="energielabelBoiler" class="col-sm-3 col-form-label">Energielabel boiler:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="energielabelBoiler"
+                                    [value]="calculation.Energie_label">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h4 class="mb-4">Kostenberekening</h4>
+
+
+                        <div class="form-group row">
+                            <label for="costOnce" class="col-sm-3 col-form-label">Kosten voor één keer opwarmen:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="costOnce"
+                                    [value]="'€' + calculation.OneTimeHeat.toFixed(2)">
+                            </div>
+                        </div>
+
+
+                        <div class=" form-group row">
+                            <label for="costYearly" class="col-sm-3 col-form-label">Kosten stilstandverlies per
+                                jaar:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="costYearly"
+                                    [value]="'€' + calculation.DownTimeLossYear.toFixed(2)">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="energyToWarm" class="col-sm-3 col-form-label">Hoeveelheid energie om op te
+                                warmen
+                                van 15
+                                ⁰C naar 70 ⁰C:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="energyToWarm"
+                                    [value]="calculation.HeatFifteenToSeventy.toFixed(1) + ' kwh'">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="timeToHeat" class="col-sm-3 col-form-label">Tijd benodigd om het water te
+                                verwarmen:</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="timeToHeat"
+                                    [value]="(calculation.TimeToHeat * 60).toFixed(0) + ' minuten'">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="standbyLoss" class="col-sm-3 col-form-label">Stilstandsverlies
+                                (ongeveer):</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="standbyLoss"
+                                    [value]="calculation.DownTimeLossDay.toFixed(1) + ' kWh per dag'">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="opmerkingen" class="col-sm-3 col-form-label">Opmerkingen:
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" id="opmerkingen"
+                                    [value]="calculation.Opmerkingen">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="downloadAsPdf()">Download als PDF</button>
+</div>

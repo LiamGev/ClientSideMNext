@@ -1,0 +1,21 @@
+.new-family-fields {
+  /* display: none; */
+  margin-top: 10px;
+}
+
+.new-family-fields.visible {
+  display: block;
+}
+
+.new-family-fields input {
+  margin-top: 5px;
+}
+
+.new-household-option {
+  font-weight: normal;
+  color: #555;
+}
+
+.new-family-button {
+  margin-left: 0px;
+}
